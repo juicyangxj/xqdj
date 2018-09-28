@@ -1,0 +1,48 @@
+.jui-list {
+    position: relative;
+    background-color: #fff;
+    &:not(.noborder){
+        @extend .jui-border-tb; 
+    }
+   
+//  border-top: 1px solid $bordercolor;
+//  border-bottom: 1px solid $bordercolor;  线的质感太差
+    .jui-list-cell {
+        position: relative;
+        overflow: hidden;
+        -webkit-touch-callout: none;
+        font-size: 1.5rem;
+        padding: 11px 20px 11px 15px;
+        &:not(:last-child):before{
+           @include line-after($line-color:$bordercolor,$left:10px,$right:0);
+        }
+//      &:hover {
+//          background-color: #f7f7f7;
+//      }
+        &>a {
+            position: relative;
+            display: block;
+            margin: -11px -20px -11px -15px;
+            padding: inherit;
+            color: inherit;
+            @include nowrap;
+        }
+        p{
+           color: #8f8f94;
+           font-size: 1.3rem;
+        }
+        .jui-nav-right:before {
+            @extend .icon-arrowright;
+            @extend .iconfont;
+            font-size: inherit;
+            line-height: 1;
+            position: absolute;
+            top: 50%;
+            right: 8px;
+            display: inline-block;
+            -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+            color: #bbb;
+        }
+    }
+}

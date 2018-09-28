@@ -1,0 +1,156 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+		<link rel="stylesheet" href="../css/main.css" />
+		<title>志愿活动详情</title>
+		<style type="text/css">
+			.wcqk button {
+				margin-bottom: 5px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="jui-content">
+			<div class="module ">
+				<div class="moduletype">
+					<span>招募令</span>
+				</div>
+				<ul class="jui-list ">
+					<li class="jui-list-cell f-font_16">
+						<div style="white-space:normal">孙杨喊你来报名！这项世界级赛事招募志愿者，下周二开始
+							<span class="jui-btn jui-btn-green f-keepall status">进行中</span>
+							<!--<span class="jui-btn jui-btn-yellow f-keepall status">已结束</span> 
+						<span class="jui-btn jui-btn-blue f-keepall status">未开始</span-->
+						</div>
+						
+						<div class="f-oh ">
+						<p class="f-width50 f-fl">发起人：张仪</p>
+						<p class="f-width50 f-fl">联系电话： 837131891</p>
+						</div>
+						<p>活动时间：<span>2018-9-10 ~2018-10-4</span></p>
+						<p>活动地点：各党支部活动场所</p>
+						<p>活动内容：<span>的回家撒和扩大开放和咖啡哈发发发，都是废话发发火</span></p>
+						
+						
+					</li>
+				</ul>
+			</div>
+			<div class="module f-mt10">
+				<div class="moduletype">
+					<span>报名信息</span>
+					<button class="jui-btn-line jui-btn-red status f-fr" id="detail">查看详情</button>
+				</div>
+				<ul class="jui-list">
+					<li class="jui-list-cell ">
+						<p>招募人数：50人</p>
+						<p>已报名人数：<span>20</span>人 </p>
+					</li>
+					<li class="jui-list-cell ">
+						<button type="button" class="jui-btnblock jui-btn-red ">我要报名</button>
+						<button type="button" class="jui-btnblock jui-disabled">已报名</button>
+						<!--<button type="button" class="jui-btnblock jui-btn-yellow " >立即分享</button>-->
+						<!--<div><img src="../img/share.png" alt="" width="30" class=""/></div>-->
+
+					</li>
+				</ul>
+			</div>
+			<div class="module f-mt10">
+				<div class="moduletype">
+					<span>实况播报</span>
+					<button type="button" class="jui-btn-line jui-btn-red f-fr open-popup" data-target="#full">我要播报</button>
+				</div>
+				<ul class="jui-list ">
+					<li class="jui-list-cell f-font_16">
+						<div>现场实在太high了</div>
+						<img src="../img/login-bg.jpg" alt="" width="70" height="70" />
+						<p>播报人：张仪 <span class="f-fr">2018-9-29 10:30</span></p>
+					</li>
+					<li class="jui-list-cell f-font_16">
+						现场实在太high了
+						<p>播报人：张仪 <span class="f-fr">2018-9-29 10:30</span></p>
+					</li>
+				</ul>
+
+			</div>
+			<div class="module f-mt10">
+				<div class="moduletype">
+					<span>评论区</span>
+					<button type="button" class="jui-btn-line jui-btn-red f-fr" id="show-prompt">我要评论</button>
+				</div>
+				<ul class="jui-list ">
+					<li class="jui-list-cell f-font_16">
+						不错
+						<p>zhangj<span class="f-fr">2018-9-29 10:30</span></p>
+					</li>
+					<li class="jui-list-cell f-font_16">
+						不错，现场实在太high了
+						<p>张仪 <span class="f-fr">2018-9-29 10:30</span></p>
+					</li>
+				</ul>
+			</div>
+
+		</div>
+		<div id="full" class='weui-popup__container'>
+			<div class="weui-popup__overlay"></div>
+			<div class="weui-popup__modal">
+				<ul class="jui-list f-scroll noborder" style="bottom: 60px;position: absolute!important;width: 100%;top: 0;">
+					<li class="jui-list-cell  ">
+						<div class="f-mt5"><textarea name="" rows="4" placeholder="请输入播报内容"></textarea></div>
+					</li>
+					<div class="jui-uploadimg f-pd10">
+						<div class="jui-files">
+							<button type="button" class="jui-btn jui-camera">
+								<form>
+									<input type="file" name="file" accept="image/*">
+									<div class="iconfont icon-zhaoxiangji f-font_32" ></div>
+									<div class="uploadtxt">上传图片</div>
+								</form>
+							</button>
+						</div>
+					</div>
+				</ul>
+
+				<div class="f-pl10 f-pr10 f-table f-ab " style="bottom: 0;top:auto">
+					<button type="button" class="jui-btnblock jui-btn-blue" id="sure">确认</button>
+					<div class="f-width_1"></div>
+					<button type="button" class="jui-btnblock close-popup">取消</button>
+				</div>
+			</div>
+		</div>
+		<div class="weui-tabbar wdxd jui-input-group" style="display: none;position: fixed;">
+			<section class="f-pt10  f-width100 f-pd10 f-border" id="pllist">
+				<textarea name="content" rows="4" placeholder="请填写评论内容" value=""></textarea>
+				<div style="text-align: right;line-height: 2.8em;">
+					<buttun class="jui-btn jui-btn-red" type="buttun" id="fbpl">提交</buttun>
+					<buttun class="jui-btn " type="buttun" id="close">关闭</buttun>
+				</div>
+			</section>
+		</div>
+
+		<script src="../js/public.js"></script>
+		<script src="../js/jquery-weui.min.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				uploadfile("img",3,".jui-files");
+				$(document).on("click", "#detail", function() {
+					$.alert("张仪、徐冯、张一安、张仪、徐冯、张一安、张仪、徐冯、张一安、张仪、徐冯、张一安、张仪、徐冯、张一安", "已报名名单");
+				});
+				$(document).on("click", "#show-prompt", function() {
+					$("body").append('<div class="weui-mask weui-mask--visible" style="z-index: 499;"></div>');
+					$(".weui-tabbar").slideDown(200);
+				});
+				$(document).on("click", "#close", function() {
+					$(".weui-mask").remove();
+					$(".weui-tabbar").slideUp(100);
+				});
+			})
+		</script>
+	</body>
+
+</html>

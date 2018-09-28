@@ -1,0 +1,147 @@
+.weui-tabbar__label {
+    font-size: 1.3rem;
+}
+
+.weui-badge {
+    border-radius: 100%;
+}
+
+.weui-tabbar__item.weui-bar__item--on .icon,
+.weui-tabbar__item.weui-bar__item--on .weui-tabbar__label {
+    color: $red;
+}
+
+i.weui-tabbar__icon,
+.weui-tabbar__icon>i {
+    font-size: 22px;
+}
+
+.weui-tab__bd-item {
+    padding-bottom: 6rem;
+}
+.weui-tabbar:before{
+    display: none;
+}
+.weui-tabbar{
+    background-color: #efefef;
+}
+//首页
+.gs {
+    border-radius: 100%;
+    width: 2.5rem;
+    height: 2.5rem;
+    text-align: center;
+}
+
+#gg {
+    width: 100%;
+    height: 3.2rem;
+}
+
+#navicons {
+    width: 100%;
+    height: 23rem;
+}
+
+#gg .swiper-slide {
+    padding-left: 5px;
+    text-align: left;
+    height: 3.2rem;
+    font-size: 1.5rem;
+    background: #fff;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    line-height: 1.2em;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    color: #999;
+}
+
+#navicons .swiper-slide {
+    padding: 1.8rem 1rem 0;
+    a {
+        @include flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.4rem;
+        color: #333;
+        img {
+            width: 70%;
+            max-width: 80px;
+        }
+    }
+}
+
+.swiper-pagination-bullet-active {
+    background-color: #dd524d;
+}
+.module{background-color: #fff;}
+.moduletype {
+    padding: 10px;
+}
+
+.moduletype span {
+    padding-left: 15px;
+    position: relative;
+}
+
+.moduletype span:before {
+    content: '';
+    position: absolute;
+    left: 0px;
+    top: 5px;
+    width: 3px;
+    height: 13px;
+    background-color: #d82b2b;
+}
+
+.more {
+    padding: 2px 10px
+}
+
+.c_dangbiao{
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    background: url(../img/dangbiao.png) no-repeat;
+    background-size:60% 60%;
+    background-position: 50% 50%;
+    background-color: #fee5e0;
+}
+.zxitem{
+    
+    a{
+        padding: 3px 12px;
+        border-radius: 30px;
+        color: #fff;
+        display: inline-block;
+        margin: 0 8px 10px 0; 
+        font-size: 1.4rem;
+        
+        &:nth-child(7n+1){
+            background-color: #fb6575;
+        }
+         &:nth-child(7n+2){
+            background-color: #1edc6f;
+        }
+         &:nth-child(7n+3){
+            background-color: #c681f5;
+        }
+         &:nth-child(7n+4){
+            background-color: #fdc565;
+        }
+         &:nth-child(7n+5){
+            background-color: #5ec0ea;
+        }
+         &:nth-child(7n+6){
+            background-color: #5c6df5;
+        }
+         &:nth-child(7n+7){
+            background-color: #cdb71d;
+        }
+    }
+}

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<title>积分考核</title>
+		<link rel="stylesheet" href="../css/main.css" />
+		<style type="text/css">
+			#zxcontent .weui-pull-to-refresh {
+				margin-top: 0;
+			}
+		</style>
+	</head>
+
+	<body class="f-bgwhite f-re f-oh jfkh">
+		<div class="swiper-container f-ab" id="zx" style="z-index: 500;background-color:#f0f0f0">
+			<div class="topbar swiper-wrapper">
+				<div class="swiper-slide">党组织争先榜</div>
+				<div class="swiper-slide">党员争先榜</div>
+			</div>
+		</div>
+		<div class="swiper-container contentlv  f-fill" id="zxcontent">
+			<div class="swiper-wrapper">
+			</div>
+		</div>
+
+		<script src="../js/public.js"></script>
+		<script src="../js/jquery-weui.min.js"></script>
+		<script src="../js/swiper.min.js"></script>
+		<script src="../js/common.js"></script>
+		<script>
+			$(function() {
+				var pullclass = '#zxcontent .swiper-slide';
+				var url2 = 'http://xxk.wg.jyit.org:9125/mobile/zhdj/studyManage/getStudyList.jsp?webColumnId=xin4cu7d3pr';
+				var url = 'http://xxk.wg.jyit.org:9125/mobile/zhdj/message/getMsgList.jsp?userId=196q8jrxbuls6&type=3';
+				var page = -1;
+				var activeIndex = 0;
+
+				function callback(result, index) {
+					var list = result.list;
+					var html = "";
+					for(var i = 0, len = list.length; i < len; i++) {
+						var item = list[i];
+						if(activeIndex == 0) {
+
+							html += '<a class="f-table jui-list-cell" href="list.html?title=党组织内部党员排名"><div class="width10"> ' + (i + 1) +
+								'</div><div class="f-width60 f-pl10">' + '东宏村（社区）党总支' + '</div><div class="f-width30 f-gray">总计<span class="f-font20 f-blue">' +
+								100 + '</span>分</div></a>';
+
+						} else {
+
+							html += '<li class="f-table jui-list-cell"><div class="f-width10">' + (i + 1) +
+								'</div><div class="f-width60 f-pl10 f-flexcolumn" style="display:flex;line-height:1.3;text-align:left"><span>' + '金平' + '</span><span class="f-font_12 f-gray ">上东村党支部</span></div><div class="f-width30 f-gray">总计<span class="f-font20 f-blue">' +
+								10 + '</span>分</div></li>';
+
+						}
+					}
+					$(pullclass).eq(index).find("ul").append(html);
+				}
+
+				//page表示当前是第几页
+				var swipernav = new Swiper('#zx', {
+					initialSlide: 0,
+					slidesPerView: 2,
+					on: {
+						init: function() {
+							$("#zx .swiper-slide").eq(0).addClass("on");
+							var item = '';
+							for(var i = 0; i < $("#zx .swiper-slide").length; i++) {
+								item += `<div class="swiper-slide weui-pull-to-refresh  f-scroll" data-page=-1  data-end=0 >
+								<div class="weui-pull-to-refresh__layer">
+									<div class='weui-pull-to-refresh__arrow'></div>
+									<div class='weui-pull-to-refresh__preloader'></div>
+									<div class="down">下拉刷新</div>
+									<div class="up">释放刷新</div>
+									<div class="refresh">正在刷新</div>
+								</div>
+								<ul class="jui-list noborder">
+								</ul>
+								 <div class="weui-loadmore doing">
+						            <i class="weui-loading"></i>
+						            <span class="weui-loadmore__tips">正在加载</span>
+						          </div>
+							</div>`;
+							}
+							$("#zxcontent .swiper-wrapper").html(item);
+							var swiper1 = new Swiper('#zxcontent', {
+								initialSlide: 0,
+								on: {
+									init: function() {
+										upAdown(pullclass, url2, callback)
+									},
+								},
+							});
+							swiper1.on('slideChange', function(e) {
+								$("#zx .swiper-slide").eq(swiper1.activeIndex).addClass("on").siblings().removeClass("on")
+								swipernav.slideTo(swiper1.activeIndex, 500);
+								page = $(pullclass).eq(swiper1.activeIndex).data("page");
+								console.log("当前显示第" + swiper1.activeIndex + "个tab项目的第" + page + "页");
+								//								URL=url;
+								activeIndex = swiper1.activeIndex;
+								if(page == -1) {
+									loadlist(0, swiper1.activeIndex, pullclass, callback)
+								}
+							});
+							$("#zx").on("click", ".swiper-slide", function() {
+								$(this).addClass("on").siblings().removeClass("on")
+								var index = $(this).index();
+								swiper1.slideTo(index, 500);
+							})
+
+						},
+					},
+				})
+
+			})
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,414 @@
+//公用的样式
+html {
+    @include fill100;
+}
+
+//>ipad
+@media screen and (min-width:769px) {
+    .jui-content {
+        width: 750px;
+        margin: 0 auto;
+    }
+}
+
+iframe {
+    border: none;
+}
+
+//谷歌浏览器有个问题，低于75%，window.getComputedStyle(html).fontSize还是渲染出12px，宽度上总是以12px基础上计算的
+//所以不用百分比，直接给出根元素的大小
+//>=ipad
+@media screen and (min-width:768px) {
+    html {
+        font-size: 11.9px!important;
+    }
+}
+
+//iphone plus到<ipad
+@media screen and (min-width:414px) and (max-width:767px) {
+    html {
+        font-size: 10.6px!important; // 1.696/1.6*62.5
+    }
+}
+
+//iphone 
+@media screen and (max-width:413px) {
+    html {
+        font-size: 10px!important; //10/16px,根元素是10px
+    }
+}
+
+* {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -webkit-user-select: none;
+    outline: 0;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    @include fill100;
+    font-size: 1.6rem;
+    color: #333;
+}
+
+.jui-content {
+    background-color: $content-bg;
+    -webkit-overflow-scrolling: touch;
+    min-height: 100%;
+}
+
+p.title {
+    color: #6d6d72;
+    font-size: 1.5rem;
+    padding: 20px 10px 7px;
+}
+
+a {
+    color: #333;
+}
+
+.jui-btn.status {
+    padding: 0px 6px;
+    border-radius: 5px;
+}
+
+span.tag {
+    font-size: 1.5rem;
+    color: #007aff;
+}
+
+span.tag2 {
+    font-size: 1.5rem;
+    color: #fdc565;
+}
+
+span.tag3 {
+    font-size: 1.5rem;
+    color: #1edc6f;
+}
+
+input,
+textarea,
+select {
+    display: inline-block;
+    border: 0;
+    background-color: transparent;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    line-height: 30px;
+    width: 100%;
+    min-height: 25px;
+    padding: 0 5px;
+    -webkit-user-select: text;
+    outline: 0;
+    font-size: 1.5rem;
+    -webkit-appearance: none;
+    vertical-align: middle;
+}
+
+.jui-input-group {
+    input[type=color],
+    input[type=date],
+    input[type=datetime-local],
+    input[type=datetime],
+    input[type=email],
+    input[type=month],
+    input[type=number],
+    input[type=password],
+    input[type=search],
+    input[type=tel],
+    input[type=text],
+    input[type=time],
+    input[type=url],
+    input[type=week],
+    select,
+    textarea {
+        border: 1px solid rgba(0, 0, 0, .2);
+        border-radius: 3px;
+        padding: 7px 5px 7px 10px;
+    }
+}
+
+.jui-input-line {
+    @extend .f-ib;
+    margin-right: 10px;
+    line-height: 2;
+    vertical-align: middle;
+    &>* {
+        float: left;
+    }
+}
+
+//有的input支持有的不支持,所以统一套一层div上加伪元素，date支持，text不支持
+@each $classname,
+$iconname,
+$fontsize in (date, rili, 2.8rem),
+(add, xinzeng, 2.8rem),
+(select, arrowdown-fill, 2rem) {
+    .jui-#{$classname} {
+        position: relative;
+        &:before {
+            @extend .icon-#{$iconname};
+            @extend .iconfont;
+            font-size: $fontsize;
+            line-height: 1;
+            position: absolute;
+            top: 50%;
+            right: 0;
+            display: inline-block;
+            -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+            color: #007aff;
+        }
+    }
+}
+
+.jui-radio {
+    position: relative;
+    width: 3.5rem;
+    input[type=radio]:before {
+        @extend .icon-danxuan;
+        @extend .iconfont;
+        font-size: 2.6rem;
+        line-height: 1;
+        position: absolute;
+        top: 50%;
+        left: 5px;
+        display: inline-block;
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
+        color: #aaa;
+    }
+    input[type=radio]:checked:before {
+        color: #007aff;
+        @extend .icon-danxuan_on;
+    }
+}
+
+.jui-checkbox {
+    position: relative;
+    width: 3.5rem;
+    input[type=checkbox]:before {
+        @extend .icon-duoxuan;
+        @extend .iconfont;
+        font-size: 2.4rem;
+        line-height: 1;
+        position: absolute;
+        top: 50%;
+        left: 5px;
+        display: inline-block;
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
+        color: #aaa;
+    }
+    input[type=checkbox]:checked:before {
+        color: #007aff;
+        @extend .icon-duoxuan_on;
+    }
+}
+
+.jui-uploadimg {
+    .jui-btn {
+        width: 9rem;
+        height: 9rem;
+        margin-right: 15px;
+        color: #8f8f94;
+    }
+    .jui-img {
+        vertical-align: top;
+        margin-right: 15px;
+        margin-bottom: 20px;
+        display: inline-block;
+        position: relative;
+        img {
+            width: 9rem;
+            height: 9rem;
+            object-fit: cover;
+        }
+        span {
+            display: inline-block;
+            background-color: red;
+            color: white;
+            font-weight: bold;
+            position: absolute;
+            top: -13px;
+            right: -13px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 22px;
+            width: 26px;
+            height: 26px;
+        }
+    }
+}
+
+//weui插件需要调整的样式
+.weui-pull-to-refresh__layer,
+.weui-navbar__item {
+    height: 4rem;
+    line-height: 4rem;
+}
+
+.weui-pull-to-refresh {
+    margin-top: -4rem;
+}
+
+.doing {
+    display: none;
+}
+
+//listhead
+.listhead {
+    position: absolute;
+    top: 4rem;
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+}
+
+.toolbar .title,
+.toolbar {
+    font-size: 1.6rem;
+}
+
+.weui-select-modal .weui-cells {
+    max-height: 20rem;
+    -webkit-overflow-scrolling: touch;
+}
+
+.weui-mask {
+    z-index: 999;
+}
+
+.newfile {
+    position: fixed;
+    bottom: 20px;
+    right: 10px;
+    z-index: 998;
+}
+
+.picker-calendar-week-days+.picker-calendar-months {
+    height: 22rem;
+}
+
+.picker-calendar-week-days {
+    height: 2rem;
+}
+
+.weui-picker-calendar .picker-modal-inner,
+.weui-picker-calendar,
+.weui-picker-modal .picker-modal-inner,
+{
+    height: 20rem;
+}
+
+.weui-picker-modal {
+    height: 23rem;
+}
+
+.weui-picker-modal .picker-items {
+    font-size: 1.6rem;
+}
+
+.weui-popup__modal .on {
+    position: relative;
+}
+
+.weui-popup__modal .on:after {
+    position: absolute;
+    font: normal normal normal 14px/1 weui;
+    right: 15px;
+    top: 15px;
+    display: block;
+    content: '\EA08';
+    color: #09bb07;
+    font-size: 17px
+}
+
+li {
+    list-style: none;
+}
+
+.imgitem {
+    width: calc(50% - 6px);
+    height: 120px;
+    float: left;
+    margin-bottom: 12px;
+    position: relative;
+}
+
+.imgitem:nth-child(2n+1) {
+    margin-right: 12px;
+}
+
+.imgitem .tip {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 4px 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    font-size: 1.4rem;
+}
+
+.imgitem img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.righttag {
+    position: absolute;
+    padding: 3px 0;
+    width: 90px;
+    text-align: center;
+    right: -32px;
+    top: -32px;
+    color: #fff;
+    font-size: 1.2rem;
+    transform: rotate(45deg);
+    transform-origin: 0 100%
+}
+
+.righttag.tagred {
+    background-color: $red;
+}
+
+.righttag.taggreen {
+    background-color: $green;
+}
+
+.righttag.tagorange {
+    background-color: $orange;
+}
+
+.righttag.tagblue {
+    background-color: $blue;
+}
+
+.jfkh {
+    .jui-list-cell>div {
+        text-align: center;
+    }
+    .jui-list-cell:first-child>div:first-child {
+        background: url(../img/first.png) no-repeat;
+        background-size: auto 25px;
+        background-position: center;
+        color: transparent;
+    }
+    .jui-list-cell:nth-child(2)>div:first-child {
+        background: url(../img/second.png) no-repeat;
+        background-position: center;
+        background-size: auto 25px;
+        color: transparent;
+    }
+    .jui-list-cell:nth-child(3)>div:first-child {
+        background: url(../img/third.png) no-repeat;
+        background-size: auto 25px;
+        background-position: center;
+        color: transparent;
+    }
+}

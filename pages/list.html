@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+		<link rel="stylesheet" href="../css/main.css" />
+		<title></title>
+	</head>
+
+	<body class="f-oh jui-content">
+		<div class="f-fill">
+			<div class="f-scroll  weui-pull-to-refresh f-fill2" data-page=-1 data-end=0>
+				<div class="weui-pull-to-refresh__layer">
+					<div class='weui-pull-to-refresh__arrow'></div>
+					<div class='weui-pull-to-refresh__preloader'></div>
+					<div class="down">下拉刷新</div>
+					<div class="up">释放刷新</div>
+					<div class="refresh">正在刷新</div>
+				</div>
+				<ul class="jui-list noborder f-oh">
+				</ul>
+				<div class="weui-loadmore doing">
+					<i class="weui-loading"></i>
+					<span class="weui-loadmore__tips">正在加载</span>
+				</div>
+			</div>
+		</div>
+		<img src="../img/add.png" class="newfile f-none" />
+		<script src="../js/public.js"></script>
+		<script src="../js/jquery-weui.min.js"></script>
+		<script src="../js/common.js"></script>
+		<script src="../js/template.js"></script>
+		<script type="text/html" id="list1">
+			<!--党员视角要审核的-->
+			{{each list as item i}}
+			<li class="jui-list-cell">
+				<a href="detail.html" class="jui-nav-right">
+					<div class="f-nowrap">{{item.title}}</div>
+					<p>发布人：李四 <span class="f-fr">{{item.date}}</span></p>
+					{{if mine}} 
+					{{if i%3==0}}
+					<span class="righttag tagred">退回</span> {{else if i%3==1}}
+					<!--<span class="righttag tagorange">已审核</span>-->
+					{{else}}
+					<span class="righttag tagblue">待审核</span> {{/if}}
+					{{/if}}
+				</a>
+			</li>
+			{{/each}}
+		</script>
+		<!--本月入党-->
+		<script type="text/html" id="list2">
+			{{each list as item i}}
+			<li class="jui-list-cell">
+				<a href="detail.html" class="jui-nav-right">
+					<div class="f-nowrap">李四</div>
+					<div class="weui-flex">
+						<p class="weui-flex__item">入党时间：2001-3-19
+							</p>
+								<p class="weui-flex__item">所在党支部：黄河党支部</p>
+					</div>
+				</a>
+			</li>
+			{{/each}}
+		</script>
+		<script type="text/html" id="list3">
+			<!--入党宣誓厅-->
+			{{each list as item i}}
+			<li class="jui-list-cell">
+				<a href="detail.html" class="jui-nav-right">
+					<div class="f-nowrap">{{item.title}}</div>
+					<p>发布人：李四 <span class="f-fr">{{item.date}}</span></p>
+				</a>
+			</li>
+			{{/each}}
+		</script>
+		<!--通用资讯，包含清风论坛要审核的-->
+		<script type="text/html" id="list4">
+			{{each list as item i}}
+			<li class="jui-list-cell">
+				<a href="detail.html" class="jui-nav-right">
+					<div class="f-nowrap">{{item.title}}</div>
+					<p>{{item.date}}</p>
+					{{if mine}} {{if i%3==0}}
+					<span class="righttag tagred">退回</span> {{else if i%3==1}}
+					<!--<span class="righttag tagorange">已审核</span>-->
+					{{else}}
+					<span class="righttag tagblue">待审核</span> {{/if}} {{/if}}
+				</a>
+			</li>
+			{{/each}}
+		</script>
+		<!--学习心得要审核的-->
+		<script type="text/html" id="list5">
+			{{each list as item i}}
+			<li class="jui-list-cell">
+				<a href="xddetail.html" class="jui-nav-right">
+					<div class="f-nowrap">
+						{{item.title}}</div>
+					<p>发布人：李四 <i class="iconfont icon-pinglun f-ml20 f-font_14"></i> 0 <span class="f-fr">{{item.date}}</span> </p>
+					{{if mine}} {{if i%3==0}}
+					<span class="righttag tagred">退回</span> {{else if i%3==1}}
+					<!--<span class="righttag tagorange">已审核</span>-->
+					{{else}}
+					<span class="righttag tagblue">待审核</span> {{/if}} {{/if}}
+				</a>
+			</li>
+			{{/each}}
+		</script>
+		<!--党组织内部党员排名-->
+		<script type="text/html" id="list6">
+			{{each list as item i}}
+			<li class="f-table jui-list-cell">
+				<div class="f-width10">{{i+1}}</div>
+				<div class="f-width60 f-pl10  f-flexcolumn" style="display:flex;line-height:1.3;text-align:left">
+					<span>金平</span>
+					<span class="f-font_12 f-gray ">上东村党支部</span>
+				</div>
+				<div class="f-width30 f-gray">总计<span class="f-font20 f-blue">10</span>分</div>
+			</li>
+			{{/each}}
+		</script>
+		<script>
+			$(function() {
+				var title = getQueryString("title");
+				var newform = getQueryString("new");
+				var mine = getQueryString("mine");
+				var newurl = '';
+//				if(judge(title)&&newform) {因为下面的栏目都是可新建的
+				if(newform){
+					$(".newfile").show();
+					newurl = 'newnormal.html?title=' + title;
+					$("body").on("click", ".newfile", function() {
+						window.location.assign(newurl)
+					})
+
+				}
+				var pullclass = '.weui-pull-to-refresh';
+				var tmplID = '';
+				var url2 = 'http://xxk.wg.jyit.org:9125/mobile/zhdj/studyManage/getStudyList.jsp?webColumnId=xin4cu7d3pr';
+				var userId = '';
+
+				if(mine) {
+					userId = '&userId=' + window.sessionStorage.getItem("userId");
+					$('title').text(getQueryString("title2"))
+				} else {
+					$('title').text(title)
+				}
+
+				switch(title) {
+					case '入党宣誓厅':
+						url2 = 'http://xxk.wg.jyit.org:9125/mobile/zhdj/studyManage/getStudyList.jsp?webColumnId=xin4cu7d3pr';
+						tmplID = 'list3';
+						newurl='newvideo.html';
+						break;
+					case '党员视角':
+						url2 = 'http://xxk.wg.jyit.org:9125/mobile/zhdj/studyManage/getStudyList.jsp?webColumnId=xin4cu7d3pr';
+						tmplID = 'list1';
+						//						newurl='';
+						break;
+					case '学习心得':
+						url2 = 'http://xxk.wg.jyit.org:9125/mobile/zhdj/studyManage/getStudyList.jsp?webColumnId=xin4cu7d3pr' + userId;
+						tmplID = 'list5';
+						//						newurl='';
+						break;
+					case '本月入党':
+						url2 = 'http://xxk.wg.jyit.org:9125/mobile/zhdj/studyManage/getStudyList.jsp?webColumnId=xin4cu7d3pr';
+						tmplID = 'list2';
+						break;
+					case '党组织内部党员排名':
+						url2 = 'http://xxk.wg.jyit.org:9125/mobile/zhdj/studyManage/getStudyList.jsp?webColumnId=xin4cu7d3pr';
+						tmplID = 'list6';
+						$("body").addClass("jfkh")
+						break;
+					default:
+						//资讯类文章
+						url2 = 'http://xxk.wg.jyit.org:9125/mobile/zhdj/studyManage/getStudyList.jsp?webColumnId=xin4cu7d3pr' + userId;
+						tmplID = 'list4';
+						break;
+						
+				}
+
+				upAdown(pullclass, url2, function(result, index) {
+					if(mine) {
+						result["mine"] = 1;
+					}
+					var actDataHtml = template(tmplID, result);
+					$(pullclass).eq(index).find("ul").append(actDataHtml);
+				})
+
+			})
+		</script>
+	</body>
+
+</html>

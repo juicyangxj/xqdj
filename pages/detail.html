@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+		<link rel="stylesheet" href="../css/main.css" />
+		<title>详情页</title>
+		<style type="text/css">
+			section {
+				padding: 10px;
+			}
+			
+			.title {
+				font-size: 20px;
+				line-height: 1.5em;
+				font-weight: bold;
+			}
+			
+			.fbdate {
+				margin-bottom: 0;
+				padding-bottom: 10px;
+				border-bottom: 1px solid #d9d9d9;
+			}
+			
+			#date {
+				color: #999;
+			}
+			
+			.content {
+				padding: 10px;
+				font-size: 1.6rem;
+				line-height: 28px;
+				text-indent: 2em;
+				word-wrap: break-word;
+			}
+			
+			.content p,
+			.content span {
+				font-size: 1.6rem!important;
+				color: #333!important;
+				line-height: 1.8em!important;
+				text-indent: 2em;
+				word-wrap: break-word;
+			}
+			
+			img,
+			video {
+				width: 100%;
+				height: auto;
+				max-height: 400px;
+				display: block;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<div class="jui-content">
+			<section>
+				<div class="title" id="contentTitle">标题</div>
+				<p class="fbdate"><span id="date">20183110</span></p>
+			</section>
+			<section class="content" id="content">
+				哈哈大坏蛋
+				<p>hdahd</p>
+			</section>
+			<section id="imgs">
+			</section>
+			<section id="video">
+			</section>
+		</div>
+
+		<script src="../js/public.js"></script>
+		<script type="text/javascript">
+			$(function() {
+
+			})
+
+			function cleardata() {
+				$("#contentTitle")[0].innerHTML = "";
+				$("#date")[0].innerHTML = "";
+				$("#content")[0].innerHTML = "";
+				var str = '';
+				for(var i = 0; i < obj.images.length; i++) {
+					str += '<img src="' + config.urlimg + obj.images[i].image + '" alt="" />';
+				}
+				$("#imgs")[0].innerHTML = str;
+				$("#video").html('<video  poster="../images/video_default.jpg"  autoplay>' +
+					'<source src="' + config.urlimg + obj.value1 + '" type="video/mp4" />' +
+					'Your browser does not support the video tag.' +
+					'</video>');
+			}
+		</script>
+	</body>
+
+</html>

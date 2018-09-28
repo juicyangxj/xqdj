@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>每日一题</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+		<link rel="stylesheet" href="../css/main.css" />
+	</head>
+
+	<body>
+		<div class="jui-content">
+			<div class="f-pd10 f-bgwhite jui-border-b" >
+				题目：<span id="title">中国共产党的宗旨是</span>
+			</div>
+			<div class=" f-mt10">
+				<ul class="jui-list ">
+					<li class="jui-list-cell f-flex">
+						<div class=" jui-radio ">
+							<input type="radio" name="radio" value="" id="radio1">
+						</div>
+						<label for="radio1" class="f-flex1"><span id="optionA">很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长</span></label>
+
+					</li>
+					<li class="jui-list-cell f-flex">
+						<div class="jui-radio ">
+							<input type="radio" name="radio" value="" id="radio2">
+						</div>
+						<label for="radio2" class="f-flex1"><span id="optionB">3213</span></label>
+					</li>
+					<li class="jui-list-cell f-flex">
+						<div class=" jui-radio ">
+							<input type="radio" name="radio" value="" id="radio3">
+						</div>
+						<label for="radio3" class="f-flex1"><span id="optionC">3214</span></label>
+
+					</li>
+					<li class="jui-list-cell f-flex">
+						<div class="jui-radio ">
+							<input type="radio" name="radio" value="" id="radio4">
+						</div>
+						<label for="radio4" class="f-flex1"><span id="optionD">3214</span></label>
+					</li>
+				</ul>
+			</div>
+			<div class="f-pd10 f-mt10">
+				<button type="button" class="jui-btnblock jui-btn-red" id="sure">提交</button>
+			</div>
+		</div>
+	</body>
+	<script src="../js/public.js"></script>
+	<script src="../js/jquery-weui.min.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			var url1 = "lianzheng/getQuestion.jsp";
+			var id = '';
+			/*			$.getJSON(url1, function(result) {
+							var val=result.list[0];
+							id=val.id;
+							$("#title")[0].innerHTML=val.title;
+							$("#optionA")[0].innerHTML=val.optionA ;
+							$("#optionB")[0].innerHTML=val.optionB ;
+							$("#optionC")[0].innerHTML=val.optionC ;
+							$("#optionD")[0].innerHTML=val.optionD ;
+						})                                           */
+			document.getElementById("sure").addEventListener('click', function() {
+				var currentPass = $("input[name=radio]:checked").length;
+				if(currentPass == 0) {
+					$.alert('您尚未答题');
+					return;
+				}
+				var url2 = "lianzheng/saveAnswer.jsp?id=" + id + "&userId=" + localStorage.getItem("userId") + '&answer=' + $("input[name=radio]:checked").val();
+				/*$.getJSON(url2, function(data) {
+					$.alert("回答正确");
+				})*/
+			})
+		})
+	</script>
+
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<title>人才工作</title>
+		<link rel="stylesheet" href="../css/main.css" />
+		<style type="text/css">
+			#zxcontent .weui-pull-to-refresh {
+				margin-top: 0;
+			}
+		</style>
+	</head>
+
+	<body class="f-bgwhite f-re f-oh">
+		<div class="swiper-container f-ab" id="zx" style="z-index: 500;background-color:#f0f0f0">
+			<div class="topbar swiper-wrapper">
+				<div class="swiper-slide">人才政策</div>
+				<div class="swiper-slide">人才活动</div>
+				<div class="swiper-slide">人才资讯</div>
+				<div class="swiper-slide">招聘招考</div>
+			</div>
+		</div>
+		<div class="swiper-container contentlv  f-fill" id="zxcontent">
+			<div class="swiper-wrapper">
+				<!--<li class="jui-list-cell">
+					<a href="###" class="jui-nav-right">
+						<div class="f-nowrap">${i}多行列表多行列表多行列表多行列表多行列表多行列表多行列表多行列表多行列表多行列表多行列表多行列表</div>
+						<p>联系人：李四 <span class="f-fr">2018-8-23</span></p>
+					</a>
+				</li>-->
+			</div>
+		</div>
+
+		<script src="../js/public.js"></script>
+		<script src="../js/jquery-weui.min.js"></script>
+		<script src="../js/swiper.min.js"></script>
+		<script src="../js/common.js"></script>
+		<script>
+			$(function() {
+				var pullclass = '#zxcontent .swiper-slide';
+				var url2 = 'http://xxk.wg.jyit.org:9125/mobile/zhdj/studyManage/getStudyList.jsp?webColumnId=xin4cu7d3pr';
+				var url = 'http://xxk.wg.jyit.org:9125/mobile/zhdj/message/getMsgList.jsp?userId=196q8jrxbuls6&type=3';
+
+				function callback(result, index) {
+					var list=result.list;
+					var html = "";
+					for(let i = 0; i < list.length; i++) {
+						html += `<li class="jui-list-cell">
+									<a href="###" class="jui-nav-right">
+										<div class="f-nowrap">${list[i].title}</div>
+										<p>2018-8-23</p>
+									</a>
+									</li>`;
+					}
+					$(pullclass).eq(index).find("ul").append(html);
+				}
+				//page表示当前是第几页
+				var swipernav = new Swiper('#zx', {
+					initialSlide: 0,
+					slidesPerView: 4,
+					on: {
+						init: function() {
+							$("#zx .swiper-slide").eq(0).addClass("on");
+							var item = '';
+							for(var i = 0; i < $("#zx .swiper-slide").length; i++) {
+								item += `<div class="swiper-slide weui-pull-to-refresh  f-scroll" data-page=-1  data-end=0 >
+								<div class="weui-pull-to-refresh__layer">
+									<div class='weui-pull-to-refresh__arrow'></div>
+									<div class='weui-pull-to-refresh__preloader'></div>
+									<div class="down">下拉刷新</div>
+									<div class="up">释放刷新</div>
+									<div class="refresh">正在刷新</div>
+								</div>
+								<ul class="jui-list noborder">
+								</ul>
+								 <div class="weui-loadmore doing">
+						            <i class="weui-loading"></i>
+						            <span class="weui-loadmore__tips">正在加载</span>
+						          </div>
+							</div>`;
+							}
+							$("#zxcontent .swiper-wrapper").html(item);
+							var swiper1 = new Swiper('#zxcontent', {
+								initialSlide: 0,
+								on: {
+									init: function() {
+										upAdown(pullclass, url2, callback)
+									},
+								},
+							});
+							swiper1.on('slideChange', function(e) {
+								$("#zx .swiper-slide").eq(swiper1.activeIndex).addClass("on").siblings().removeClass("on")
+								swipernav.slideTo(swiper1.activeIndex, 500);
+								var page = $(pullclass).eq(swiper1.activeIndex).data("page");
+								console.log("当前显示第" + swiper1.activeIndex + "个tab项目的第" + page + "页");
+//								URL=url;
+								if(page == -1) {
+									loadlist(0, swiper1.activeIndex, pullclass, callback)
+								}
+							});
+							$("#zx").on("click", ".swiper-slide", function() {
+								$(this).addClass("on").siblings().removeClass("on")
+								var index = $(this).index();
+								swiper1.slideTo(index, 500);
+							})
+
+						},
+					},
+				})
+
+			})
+		</script>
+	</body>
+
+</html>

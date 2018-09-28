@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+		<link rel="stylesheet" href="../css/main.css" />
+		<title>发布党日活动</title>
+	</head>
+
+	<body>
+		<div class="jui-content f-pt10">
+			<ul class="jui-list ">
+				<li class="jui-list-cell f-table ">
+					<div class="f-width_7">标题</div>
+					<div><input type="text" /></div>
+				</li>
+				<li class="jui-list-cell f-table ">
+					<div class="f-width_7">联系人</div>
+					<div><input type="text" /></div>
+				</li>
+				<li class="jui-list-cell f-table ">
+					<div class="f-width_7">联系电话</div>
+					<div><input type="text" /></div>
+				</li>
+				
+				<li class="jui-list-cell f-table ">
+					<div class="f-width_7">开始时间</div>
+					<div class="jui-date"><input type="text" class='time-picker' /></div>
+				</li>
+				<li class="jui-list-cell f-table ">
+					<div class="f-width_7">结束时间</div>
+					<div class="jui-date"><input type="text" class='time-picker' /></div>
+				</li>
+				<li class="jui-list-cell f-table ">
+					<div class="f-width_7">活动类型</div>
+					<div class="jui-select"><input type="text" class="select"/></div>
+				</li>
+				<li class="jui-list-cell f-table ">
+					<div class="f-width_7">活动地点</div>
+					<div><input type="text" /></div>
+				</li>
+				<li class="jui-list-cell  ">
+					<div>活动内容</div>
+					<div class="f-mt5"><textarea name="" rows="4" placeholder="请输入活动内容"></textarea></div>
+				</li>
+				<li class="jui-list-cell f-table ">
+					<div class="f-width_7">参与支部</div>
+					<div class="jui-add open-popup" data-target="#full"><input type="text" readonly="readonly" class="gllm" /></div>
+				</li>
+			</ul>
+			<div class="jui-uploadimg f-pd10">
+				<div class="jui-files">
+					<button type="button" class="jui-btn jui-camera">
+						<form>
+							<input type="file" name="file" accept="image/*">
+							<div class="iconfont icon-zhaoxiangji f-font_32" ></div>
+							<div class="uploadtxt">上传图片</div>
+						</form>
+					</button>
+				</div>
+			</div>
+			<div class="f-pl10 f-pr10 f-pb10">
+				<button type="button" class="jui-btnblock jui-btn-red">发布</button>
+			</div>
+		</div>
+
+		<div id="full" class='weui-popup__container'>
+			<div class="weui-popup__overlay"></div>
+			<div class="weui-popup__modal">
+				<ul class="jui-list f-scroll noborder" style="bottom: 60px;position: absolute!important;width: 100%;top: 0;">
+					<li class="jui-list-cell">机关党总支</li>
+					<li class="jui-list-cell">新桥党支部</li>
+					<li class="jui-list-cell">机关党总支</li>
+					<li class="jui-list-cell">新桥党支部</li><li class="jui-list-cell">机关党总支</li>
+					<li class="jui-list-cell">新桥党支部</li><li class="jui-list-cell">机关党总支</li>
+					<li class="jui-list-cell">新桥党支部</li><li class="jui-list-cell">机关党总支</li>
+					<li class="jui-list-cell">新桥党支部</li><li class="jui-list-cell">机关党总支</li>
+					<li class="jui-list-cell">新桥党支部</li><li class="jui-list-cell">机关党总支</li>
+					<li class="jui-list-cell">新桥党支部</li><li class="jui-list-cell">机关党总支</li>
+					<li class="jui-list-cell">新桥党支部</li><li class="jui-list-cell">机关党总支</li>
+					<li class="jui-list-cell">新桥党支部</li><li class="jui-list-cell">机关党总支</li>
+					<li class="jui-list-cell">新桥党支部</li>
+				</ul>
+
+				<div class="f-pl10 f-pr10 f-table f-ab " style="bottom: 0;top:auto">
+					<button type="button" class="jui-btnblock jui-btn-blue" id="sure">确认</button>
+					<div class="f-width_1"></div>
+					<button type="button" class="jui-btnblock close-popup">取消</button>
+				</div>
+			</div>
+		</div>
+		<script src="../js/public.js"></script>
+		<script src="../js/jquery-weui.min.js"></script>
+		<script>
+			$(function() {
+				uploadfile("img",3,".jui-files");
+				$(".time-picker").datetimePicker({
+					min: "1990-12-12",
+					max: "2022-12-12 12:12",
+					onChange: function(picker, values, displayValues) {
+						console.log(values);
+					}
+				});
+				var items = [{
+						title: "三会一课",
+						value: "001",
+					},
+					{
+						title: "教育培训周",
+						value: "002",
+					},
+					{
+						title: "统一活动日",
+						value: "003",
+					},
+					{
+						title: "志愿活动",
+						value: "004",
+					},
+					{
+						title: "固定学习日",
+						value: "005",
+					}
+				];
+				$(".select").select({
+					title: "请选择所属栏目",
+					items: items,
+					onClose: function() {
+						$(".weui-mask").remove()
+					},
+					onOpen: function() {
+						$("body").append('<div class="weui-mask weui-mask--visible"></div>')
+					},
+					onChange: function(d) {},
+				});
+				$("body").on("click", ".weui-popup__modal li", function() {
+					$(this).addClass("on").siblings().removeClass("on")
+				})
+				$("body").on("click", "#sure", function() {
+					$(".gllm").val($(".weui-popup__modal li.on").text());
+					$(".close-popup").click();
+				})
+			})
+		</script>
+	</body>
+
+</html>

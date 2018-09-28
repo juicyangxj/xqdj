@@ -1,0 +1,29 @@
+@charset "utf-8";
+@import 
+
+
+ //放置一些外部引入的框架  
+     "./vendors/weui",
+     "./vendors/jquery-weui",
+     
+//放置基本样式、辅助功能性SCSS文件
+//  "./base/reset",
+
+    "./base/variables",
+    "./base/mixin",
+    "./base/public",
+     "./base/function",
+     
+   //放置一些公用组件   
+    "./components/list",
+    "./components/button",
+    "./components/border",
+    "./components/icon",
+    "./components/table",
+    "./components/camera",
+   
+     
+ //放置跟具体项目页面相关的样式文件 
+    "./pages/index",
+    "./pages/zx";
+    

@@ -1,0 +1,121 @@
+/* 功能型样式 */
+@import  "./mixin.scss";
+.f-ib{display:inline-block;*display:inline;*zoom:1;}
+.f-border{box-sizing: border-box;}
+.f-content{box-sizing: content-box;}
+.f-fill{ @include fill100;@extend .f-ib;}
+.f-fill2{
+    width:100%;
+    height: calc(100% + 4rem);
+    height: -webkit-calc(100% + 4rem);
+}
+.f-none{display:none;}
+.f-block{display:block;}
+.f-flex{ @include flex;}
+.f-flexcolumn{flex-direction: column;}
+.f-flex1{
+    flex: 1;
+}
+.f-re{
+    position: relative;
+}
+.f-ab{
+    position:absolute;
+    width: 100%;
+    height: auto;
+    top: 0;
+    left: 0;
+}
+.f-table{
+    display: table;
+    width: 100%;   
+    
+    &.tablefixed{
+        table-layout:fixed;  
+    }   
+    /*table-layout用来显示表格单元格、行、列的算法规则,fixed表示水平布局仅取决于表格宽度，不填这一项代表水平布局取决于内容*/
+    &> *{
+        display: table-cell;
+        vertical-align: middle; 
+        white-space: normal;
+    }
+}
+.f-scroll{overflow-y: scroll;-webkit-overflow-scrolling: touch;}
+.f-fl{float:left;}
+.f-fr{float:right;}
+.f-pr{position:relative;}
+.f-oh{overflow:hidden;}
+.f-textleft{text-align:left;}
+.f-textcenter{text-align:center;}
+.f-textright{text-align:right;}
+.f-bold{font-weight: bold;}
+.f-pointer{cursor:pointer;}
+.f-keepall{
+    word-break: keep-all;
+}
+.f-usn{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;-o-user-select:none;user-select:none;}
+.f-vm{vertical-align: middle;}
+/* 文字截断 */
+.f-nowrap{
+    @include nowrap;
+}
+.f-nowrap-multi{
+    overflow: hidden;
+    text-overflow: ellipsis;
+     display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    height: inherit;
+    white-space: normal;
+}
+
+@include fontsize(14px);
+@include fontsize(16px);
+
+@for $i from 5 through 40 { 
+  .f-font_#{$i} { font-size: 0.1rem * $i!important; }
+  .f-pl#{$i} { padding-left: 0.1rem * $i!important; }
+  .f-pr#{$i} { padding-right: 0.1rem * $i!important; }
+  .f-pt#{$i} { padding-top: 0.1rem * $i!important; }
+  .f-pb#{$i} { padding-bottom: 0.1rem * $i!important; }
+  .f-ml#{$i} { margin-left: 0.1rem * $i!important; }
+  .f-mr#{$i} { margin-right: 0.1rem * $i!important; }
+  .f-mt#{$i} { margin-top:0.1rem * $i!important; }
+  .f-mb#{$i} { margin-bottom: 0.1rem * $i!important; }
+
+  .f-pd#{$i} { padding: 0.1rem * $i!important; } 
+  .f-mg#{$i} { margin: 0.1rem * $i!important; } 
+}
+
+@for $i from 1 through 100 { 
+    .f-width#{$i}{
+        width: $i *1%;
+    }
+}
+
+.f-width_1{
+    width: 1rem;
+}
+.f-width_2{
+    width: 2rem;
+}
+.f-width_3{
+    width: 3rem;
+}
+.f-width_4{
+    width: 4rem;
+}
+.f-width_5{
+    width: 5rem;
+}
+.f-width_7{
+    width:7rem;
+}
+ @each $color,$color1 in ("blue",$blue),("red",$red),("yellow",$yellow),("green",$green),("orange",$orange),("gray",$gray),("white",$white){
+    .f-#{$color}{
+        color:$color1;
+    }
+    .f-bg#{$color}{
+        background-color:$color1;
+    }
+ } 

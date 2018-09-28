@@ -1,0 +1,73 @@
+@mixin btn{
+    text-align: center;
+    color: #333;
+    font-size: 1.4rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 6px 12px;
+    cursor: pointer;
+    vertical-align: top; 
+    transition: all .2s linear;
+    &:disabled,&.jui-disabled {
+        border-color: $button-disabled-bg-color;
+        color: $button-disabled-text;
+        background: $button-disabled-bg-color;
+    }
+    
+}
+.jui-btn {
+     @include btn;
+    background-color: #fff;
+    &:active{
+        color: #fff;
+        background-color: #eee; 
+    }
+    
+    @each $color,$color1 in ("blue",$blue),("red",$red),("yellow",$yellow),("green",$green){
+        &.jui-btn-#{$color}{
+            background-color: $color1;
+            color: #fff;
+            border-color:$color1;
+        }
+         &.jui-btn-#{$color}:active{
+           opacity: 0.6;
+         }
+    } 
+}
+
+.jui-btn-line{
+    @include btn;
+    background-color: transparent;
+    &:active{
+        color: #fff;
+        background-color: #eee; 
+    }
+    @each $color,$color1 in ("blue",$blue),("red",$red),("yellow",$yellow),("green",$green){
+        &.jui-btn-#{$color}{
+            color:  $color1;
+            border-color:$color1;
+        }
+        &.jui-btn-#{$color}:active{
+            border-color: $color1;
+            color: #fff;
+            background: $color1;
+         }
+    } 
+}
+
+.jui-btnblock {
+    @extend .jui-btn;
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font-size:  1.7rem;
+    margin-bottom: 10px;
+}
+.jui-btnblock-line {
+    @extend .jui-btn-line;
+    display: block;
+    width: 100%;
+    padding: 12px;
+    font-size:  1.6rem;
+    margin-bottom: 10px;
+}

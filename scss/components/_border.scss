@@ -1,0 +1,133 @@
+@import "../base/_variables";
+/* 1px hack,需要自定义0.5px边框用，暂时保留，不过还没遇到要用的地方 */
+.jui-border-b:before {
+    border-bottom: 1px solid $bordercolor;
+    content: '';
+    display: block;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    -webkit-transform-origin: left bottom;
+//  @media screen and (-webkit-min-device-pixel-ratio: 2) {
+        -webkit-transform:scaleY(.5);
+//  }
+    @media screen and (-webkit-min-device-pixel-ratio: 3) {
+        -webkit-transform:scaleY(.3333);
+    }
+
+}
+
+.jui-border-t:before {
+    border-top: 1px solid $bordercolor;
+    content: '';
+    display: block;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    -webkit-transform-origin: left top;
+//  @media screen and (-webkit-min-device-pixel-ratio: 2) {
+        -webkit-transform:scaleY(.5);
+//  }
+    @media screen and (-webkit-min-device-pixel-ratio: 3) {
+        -webkit-transform:scaleY(.3333);
+    }
+}
+
+.jui-border-l:before {
+    border-left: 1px solid $bordercolor;
+    content: '';
+    display: block;
+    bottom: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    -webkit-transform-origin: left top;
+//  @media screen and (-webkit-min-device-pixel-ratio: 2) {
+        -webkit-transform:scaleX(.5);
+//  }
+    @media screen and (-webkit-min-device-pixel-ratio: 3) {
+        -webkit-transform:scaleX(.3333);
+    }
+}
+
+.jui-border-r:before {
+    border-right: 1px solid $bordercolor;
+    content: '';
+    display: block;
+    bottom: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    -webkit-transform-origin: right top;
+//  @media screen and (-webkit-min-device-pixel-ratio: 2) {
+        -webkit-transform:scaleX(.5);
+//  }
+    @media screen and (-webkit-min-device-pixel-ratio: 3) {
+        -webkit-transform:scaleX(.3333);
+    }
+}
+
+.jui-border-t,.jui-border-l,.jui-border-b,.jui-border-r,.jui-border-tb,.jui-border {
+    position: relative;
+}
+
+.jui-border-tb:before {
+    border-top: 1px solid $bordercolor;
+    content: '';
+    display: block;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    -webkit-transform-origin: left top;
+//  @media screen and (-webkit-min-device-pixel-ratio: 2) {
+        -webkit-transform:scaleY(.5);
+//  }
+    @media screen and (-webkit-min-device-pixel-ratio: 3) {
+        -webkit-transform:scaleY(.3333);
+    }
+}
+
+.jui-border-tb:after {
+    border-bottom: 1px solid $bordercolor;
+    content: '';
+    display: block;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    -webkit-transform-origin: left bottom;
+//  @media screen and (-webkit-min-device-pixel-ratio: 2) {
+        -webkit-transform:scaleY(.5);
+   // }
+    @media screen and (-webkit-min-device-pixel-ratio: 3) {
+        -webkit-transform:scaleY(.3333);
+    }
+}
+.jui-border:before {
+    content:"";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 1px solid $bordercolor;
+    -webkit-transform-origin: 0 0;
+    padding: 1px;
+    -webkit-box-sizing: border-box;
+    pointer-events: none;
+    z-index: 1;
+    pointer-events: none;
+    @media screen and (-webkit-min-device-pixel-ratio: 2) {
+        width: 200%;
+        height: 200%;
+        -webkit-transform:scale(.5);
+    }
+    @media screen and (-webkit-min-device-pixel-ratio: 3) {
+        width: 300%;
+        height: 300%;
+        -webkit-transform:scale(.3333);
+    }
+}
