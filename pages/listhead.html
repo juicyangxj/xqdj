@@ -172,9 +172,8 @@
 						<span class="jui-btn jui-btn-red f-keepall">未认领</span> {{/if}}
 					</div>
 					<div class="weui-flex"><p class="weui-flex__item">许愿人：{{item.writer}}</p>
-						<p class="weui-flex__item">村、社区：黄河村</p>
+						<p class="weui-flex__item">电话：839139110</p>
 					</div>
-					<p>联系电话：839139110</p>
 					<p>发起时间：{{item.date}}</p>
 				</a>
 			</li>
@@ -349,31 +348,7 @@
 						url2 = 'http://xxk.wg.jyit.org:9125/mobile/zhdj/studyManage/getStudyList.jsp?webColumnId=xin4cu7d3pr';
 						tmplID = 'list5';
 						newurl = 'newwxy.html';
-						$("#name").text("村、社区")
-						items = [{
-								title: "全部",
-								value: "-1",
-							}, {
-								title: "何巷村",
-								value: "001",
-							},
-							{
-								title: "黄河村",
-								value: "002",
-							},
-							{
-								title: "黄河社区",
-								value: "003",
-							},
-							{
-								title: "康定社区",
-								value: "004",
-							},
-							{
-								title: "雷下",
-								value: "005",
-							}
-						];
+						$("#type").hide();
 						items2 = [{
 							title: '全部',
 							value: "-1",
