@@ -37,9 +37,9 @@
 			<!--党员视角要审核的-->
 			{{each list as item i}}
 			<li class="jui-list-cell">
-				<a href="detail.html" class="jui-nav-right">
+				<a href="zxjydetail.html" class="jui-nav-right">
 					<div class="f-nowrap">{{item.title}}</div>
-					<p>发布人：李四 <span class="f-fr">{{item.date}}</span></p>
+					<p>发布人：李四  <i class="iconfont icon-pinglun f-ml20 f-font_14"></i> 0 <span class="f-fr">{{item.date}}</span></p>
 					{{if mine}} 
 					{{if i%3==0}}
 					<span class="righttag tagred">退回</span> {{else if i%3==1}}

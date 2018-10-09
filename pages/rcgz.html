@@ -18,7 +18,7 @@
 		<div class="swiper-container f-ab" id="zx" style="z-index: 500;background-color:#f0f0f0">
 			<div class="topbar swiper-wrapper">
 				<div class="swiper-slide">人才政策</div>
-				<div class="swiper-slide">人才活动</div>
+				<!--<div class="swiper-slide">人才活动</div>-->
 				<div class="swiper-slide">人才资讯</div>
 				<div class="swiper-slide">招聘招考</div>
 			</div>
@@ -60,7 +60,7 @@
 				//page表示当前是第几页
 				var swipernav = new Swiper('#zx', {
 					initialSlide: 0,
-					slidesPerView: 4,
+					slidesPerView: 3,
 					on: {
 						init: function() {
 							$("#zx .swiper-slide").eq(0).addClass("on");
